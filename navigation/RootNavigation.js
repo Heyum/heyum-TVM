@@ -1,14 +1,20 @@
 import { createStackNavigator } from "react-navigation";
-import HomeScreen from "../screens/Home";
-import BuyingListScreen from "../screens/BuyingListScreen";
+import HomeScreen from "../screens/HomeScreen";
+import ChoosingItemScreen from "../screens/ChoosingItemScreen";
 
 const RootNavigation = createStackNavigator(
     {
         Home: {
             screen: HomeScreen,
+            navigationOptions: () => ({
+                title: 'HOME',
+            }),
         },
-        BuyingList: {
-            screen: BuyingListScreen,
+        ChoosingItem: {
+            screen: ChoosingItemScreen,
+            navigationOptions: () => ({
+                title: '골라 골라!',
+            }),
         }
     },
     {

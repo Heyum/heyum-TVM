@@ -21,11 +21,11 @@ export default class HomeScreen extends React.Component {
           </View>  
       );
     }
-    static navigationOptions = ({ navigation }) => {
+    /*static navigationOptions = ({ navigation }) => {
         return {
             title: 'HOME',
         };
-    };
+    };*/
 }
 
 const styles = StyleSheet.create({

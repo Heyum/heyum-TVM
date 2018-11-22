@@ -1,3 +1,3 @@
 # heyum-TVM
 
-Oh I think WHat the Fcck SHI!
+This is for SOFTWARE ENGINEERING CLASS
