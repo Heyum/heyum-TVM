@@ -4,7 +4,6 @@ import { actionCreators as ChoosingItemsActions } from "../../redux/modules/choo
  
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state);
     const { choosingItems: { buyingLists } } = state;
     return {
         buyingLists
@@ -12,10 +11,9 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    dispatch(ChoosingItemsActions.reset());
     return {
-        initApp: (item) => {
-            dispatch(ChoosingItemsActions.chooseItem(item));
+        initApp: () => {
+            dispatch(ChoosingItemsActions.reset());
         }        
     };
 };

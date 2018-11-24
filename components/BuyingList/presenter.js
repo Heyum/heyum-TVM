@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, TextInput, Platform, ScrollView  } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, TextInput, Platform, ScrollView } from 'react-native';
 import Button from "../Button";
 import PropTypes from "prop-types";
 import { withNavigation } from 'react-navigation';
-import Item from "../Items"
+import Item from "../Items/BuyingListItems"
 
 const { height, width } = Dimensions.get("window");
 
 class BuyingList extends Component{
     static propTypes = {
         buyingLists: PropTypes.array,
-        getFeed: PropTypes.func.isRequired
     };
 
     render(){
@@ -19,11 +18,13 @@ class BuyingList extends Component{
         return(
             <View style={styles.BL}>
                 <View style={styles.list}>  
-                    <ScrollView contentContainerStyle={styles.feeds}>
+                    <ScrollView 
+                    contentContainerStyle={styles.feeds}
+                    >
                         {
                             buyingLists ? 
                                 buyingLists.map(item => (
-                                    <Item key={item.id} {...item}/>
+                                    <Item key={item.id} {...item} />
                                 )) 
                              : null
                         }

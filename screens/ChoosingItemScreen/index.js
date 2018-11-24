@@ -13,7 +13,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         initApp: () => {
-            dispatch(ChoosingItemsActions.getFeeds());
+            dispatch(ChoosingItemsActions.setFeeds());
+        },
+        pickItem: (item) => {
+            dispatch(ChoosingItemsActions.chooseItem(item));
         }
     };
 };

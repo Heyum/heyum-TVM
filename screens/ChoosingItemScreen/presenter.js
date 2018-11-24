@@ -1,23 +1,25 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import PropTypes from "prop-types";
-import Item from '../../components/Items'
+import Item from '../../components/Items/ChoosingScreenItems'
 
 export default class ChoosingItemScreen extends React.Component {
     static propTypes = {
         feeds: PropTypes.array,
-        getFeed: PropTypes.func.isRequired
+        pickItem: PropTypes.func.isRequired
     };
 
     render() {
-        const { feeds } = this.props;
+        const { feeds, pickItem } = this.props;
+        console.log("ChoosingItemScreen this.props", this.props.pickItem);
+
         return(
           <View style={styles.container}>
             <ScrollView contentContainerStyle={styles.feeds}>
                 {
                     feeds ? 
                     feeds.map(item => (
-                        <Item key={item.id} {...item}/>
+                        <Item key={item.id} {...item} pick={pickItem}/>
                         )) 
                     : null
                 }

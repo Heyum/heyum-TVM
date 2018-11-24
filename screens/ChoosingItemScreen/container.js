@@ -3,42 +3,28 @@ import PropTypes from "prop-types";
 import ChoosingItemScreen from "./presenter";
 
 class Container extends Component {
-  static propTypes = {
-    feeds: PropTypes.array,
-    getFeed: PropTypes.func.isRequired
-  };
+    static propTypes = {
+        feeds: PropTypes.array,
+        initApp: PropTypes.func.isRequired,
+        pickItem: PropTypes.func.isRequired
+    };
 
-  /* state = {
-    isFetching: false
-  };
-  componentWillReceiveProps = nextProps => {
-    if (nextProps.feed) {
-      this.setState({
-        isFetching: false
-      });
+    componentWillReceiveProps = nextProps => {
+
+    };
+
+
+    componentDidMount = () => {
+        const { initApp } = this.props;
+        initApp();
+    };
+
+    render() {
+        return (
+          <ChoosingItemScreen {...this.props} {...this.state} />
+        );
     }
-  };
-  */
-
-  componentDidMount = () => {
-    const { initApp } = this.props;
-    initApp();
-  };
-
-  render() {
-    return (
-      <ChoosingItemScreen {...this.props} {...this.state} />
-    );
-  }
   
-  /*
-  _refresh = () => {
-    const { getFeed } = this.props;
-    this.setState({
-      isFetching: true
-    });
-    getFeed();
-  }; */
 }
 
 export default Container;
