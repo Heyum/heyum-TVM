@@ -3,6 +3,8 @@ import { persistStore, persistReducer } from "redux-persist"; // 디스크에 �
 import storage from "redux-persist/lib/storage"; // redux-persist 방식 중에 async를 선택하겠다!
 import thunk from "redux-thunk";
 import choosingItems from "./modules/choosingItems"
+import choosingVendingMachine from "./modules/choosingVendingMachine"
+import choosingCycle from "./modules/choosingCycle"
 
 const middlewares = [ thunk ];
 
@@ -12,7 +14,7 @@ const persistConfig = {
     // blacklist: ["modules..."] -> persist할 reducer를 선택가능!
 };
 
-const rootReducer = combineReducers({choosingItems});
+const rootReducer = combineReducers({choosingItems, choosingVendingMachine, choosingCycle});
 
 const reducer = persistReducer(persistConfig, rootReducer);
 

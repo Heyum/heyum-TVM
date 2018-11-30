@@ -1,52 +1,22 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, TextInput } from 'react-native';
-import Button from "../Button";
-  
-const { height, width } = Dimensions.get("window");
+import { connect } from "react-redux";
+import Container from "./container";
+import { actionCreators as choosingVendingMachineActions } from "../../redux/modules/choosingVendingMachine";
 
-class VendingMachine extends Component{
-    render(){
-        return(
-            <View style={styles.VM}>
-                <View style={styles.padding}>
-                    <View style={styles.list}>
-                        <TextInput style={styles.input} placeholder={"I want this vending machine"} />
-                    </View>
-                </View>
-                <View style={styles.button}>
-                    <Button iconName="list" onPress={() => alert("it works!")} ></Button>
-                </View>        
-            </View>    
-        );
-    }
-}
+const mapStateToProps = (state, ownProps) => {
+    console.log("VendingMachine mapStateToProps", state);
+    const { choosingVendingMachine: { choosedVendingMachine } } = state;
+    return {
+        choosedVendingMachine
+    };
+};
 
-const styles = StyleSheet.create({
-    VM: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-    },
-    list:{
-        backgroundColor: "white",
-        borderRadius: 10,
-        marginTop: 10,
-        marginBottom: 5,
-        width: 300,
-        height: 50,
-    },
-    button:{
-        padding: 8
-    },
-    input:{
-        padding: 20
-    },
-    padding:{
-        padding : 8
-    }
-});
-  
-  
+const mapDispatchToProps = (dispatch, ownProps) => {
+    console.log("VendingMachine mapDispatchToProps");
+    return {
+        initApp: () => {
+            dispatch(choosingVendingMachineActions.reset());
+        }
+    };
+};
 
-export default VendingMachine;
+export default connect(mapStateToProps, mapDispatchToProps)(Container);

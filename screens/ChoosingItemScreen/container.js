@@ -10,16 +10,18 @@ class Container extends Component {
     };
 
     componentWillReceiveProps = nextProps => {
-
+        console.log("ChoosingItemScreen componentWillReceiveProps");    
     };
 
 
     componentDidMount = () => {
+        console.log("ChoosingItemScreen componentDidMount");    
         const { initApp } = this.props;
         initApp();
     };
 
     render() {
+        console.log("ChoosingItemScreen render");    
         return (
           <ChoosingItemScreen {...this.props} {...this.state} />
         );

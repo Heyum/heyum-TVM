@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import PropTypes from "prop-types";
-import Item from '../../components/Items/ChoosingScreenItems'
+import Item from '../../components/Items/BuyingList/ChoosingScreenItem'
+import BuyingList from "../../components/BuyingList"
 
 export default class ChoosingItemScreen extends React.Component {
     static propTypes = {
@@ -24,6 +25,7 @@ export default class ChoosingItemScreen extends React.Component {
                     : null
                 }
             </ScrollView>
+            <BuyingList />
           </View>  
         );
     }
@@ -39,6 +41,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#C5E1A5',
         flexDirection: 'column',
+        alignItems: "center"
     },
     feeds: {
         alignItems: "center",

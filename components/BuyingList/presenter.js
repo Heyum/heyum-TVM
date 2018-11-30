@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions, TextInput, Platform, ScrollView } from 'react-native';
-import Button from "../Button";
 import PropTypes from "prop-types";
-import { withNavigation } from 'react-navigation';
-import Item from "../Items/BuyingListItems"
+import Item from "../Items/BuyingList/BuyingListItem"
 
 const { height, width } = Dimensions.get("window");
 
@@ -16,33 +14,22 @@ class BuyingList extends Component{
         const { buyingLists } = this.props;
 
         return(
-            <View style={styles.BL}>
-                <View style={styles.list}>  
-                    <ScrollView 
-                    contentContainerStyle={styles.feeds}
-                    >
-                        {
-                            buyingLists ? 
-                                buyingLists.map(item => (
-                                    <Item key={item.id} {...item} />
-                                )) 
-                             : null
-                        }
-                    </ScrollView>
-                </View>
-                <View style={styles.button}>
-                    <Button iconName="shopping-cart" onPress={() => this.props.navigation.navigate('ChoosingItem')} ></Button>   
-                </View> 
-            </View>    
+            <View style={styles.list}>  
+                <ScrollView contentContainerStyle={styles.feeds}>
+                    {
+                        buyingLists ? 
+                            buyingLists.map(item => (
+                                <Item key={item.id} {...item} />
+                            )) 
+                         : null
+                    }
+                </ScrollView>
+            </View>   
         );
     }
 }
 
 const styles = StyleSheet.create({
-    BL: {
-        flex: 4,
-        alignItems: "center"
-    },
     list:{
         backgroundColor: "white",
         flex: 3,
@@ -64,15 +51,10 @@ const styles = StyleSheet.create({
             }
         })
     },
-    button:{
-        flex: 1,
-        marginTop: 5
-    },
-    input:{
-        padding: 20,
-        borderBottomColor: "#bbb"
+    feeds: {
+        alignItems: "center"
     }
 });
   
 
-export default withNavigation(BuyingList);
+export default BuyingList;

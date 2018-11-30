@@ -4,6 +4,7 @@ import { actionCreators as ChoosingItemsActions } from "../../redux/modules/choo
  
 
 const mapStateToProps = (state, ownProps) => {
+    console.log("ChoosingItemScreen mapStateToProps");    
     const { choosingItems: { feeds } } = state;
     return {
         feeds
@@ -11,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+    console.log("ChoosingItemScreen mapDispatchToProps");    
     return {
         initApp: () => {
             dispatch(ChoosingItemsActions.setFeeds());

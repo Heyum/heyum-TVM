@@ -1,40 +1,23 @@
-import React from 'react';
-import { View, Text, StyleSheet, StatusBar } from "react-native";
-import BuyingList from "../../components/BuyingList"
-import BuyNow from "../../components/BuyNow"
-import Time from "../../components/Time"
-import VendingMachine from "../../components/VendingMachine"
+import { connect } from "react-redux";
+import Container from "./container";
 
-export default class HomeScreen extends React.Component {
-    render() {
-        return(
-          <View style={styles.container}>
-              <StatusBar />
-              <Text style={styles.VendingMachine}> VendingMachine</Text>
-              <VendingMachine />
-              <Text>  Buying List </Text>
-              <BuyingList />
-              <Text>  Time </Text>
-              <Time />
-              <Text>  Buy Now </Text>
-              <BuyNow />
-          </View>  
-      );
-    }
-    /*static navigationOptions = ({ navigation }) => {
-        return {
-            title: 'HOME',
-        };
-    };*/
-}
+const mapStateToProps = (state, ownProps) => {
+    console.log("HomeScreen mapStateToProps");    
+    const { choosingVendingMachine: { choosedVendingMachine } } = state;
+    const { choosingItems: { totalAmount } } = state;
+    const { choosingCycle: { choosedCycle } } = state;
+    return {
+        choosedVendingMachine,
+        totalAmount,
+        choosedCycle
+    };
+};
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#C5E1A5',
-        flexDirection: 'column',
-    },
-    VendingMachine: {
-        marginTop: 20
-    }
-})
+const mapDispatchToProps = (dispatch, ownProps) => {
+    console.log("HomeScreen mapDispatchToProps");    
+    return {
+
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);

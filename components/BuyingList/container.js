@@ -5,19 +5,18 @@ import BuyingList from "./presenter";
 class Container extends Component {
     static propTypes = {
         buyingLists: PropTypes.array,
-        initApp: PropTypes.func.isRequired
     };
 
     componentWillReceiveProps = nextProps => {
-
+        console.log("BuyingList componentWillReceiveProps");
     };
 
     componentDidMount = () => {
-        const { initApp } = this.props;
-        initApp();
+        console.log("BuyingList componentDidMount");
     }; 
 
     render() {
+        console.log("BuyingList render");
         return (
             <BuyingList {...this.props} {...this.state} />
         );
