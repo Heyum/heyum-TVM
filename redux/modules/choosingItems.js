@@ -16,21 +16,20 @@ function chooseItem(item) {
             const { choosingItems: { buyingLists } } = getState();
             const { choosingItems: { totalAmount } } = getState();
             console.log("totalAmount", totalAmount);
-            if(buyingLists) {
-                  let number = buyingLists.findIndex(obj => obj.id === item.id);
-                  if(number === -1) {
-                        buyingLists.push(item);
-                        totalAmount.price += item.price;
-                  //      console.log(buyingLists);
-                  } else {
-                        buyingLists[number].count += 1;
-                        totalAmount.price += item.price;
-                  //      console.log(buyingLists);
-                  }
-            } else {
+
+            let number = buyingLists.findIndex(obj => obj.id === item.id);
+            if(number === -1) {
                   buyingLists.push(item);
                   totalAmount.price += item.price;
+            //      console.log(buyingLists);
+            } else {
+                  buyingLists[number].count += 1;
+                  totalAmount.price += item.price;
+            //      console.log(buyingLists);
             }
+
+            console.log("chooseItem test!", getState());
+            
             dispatch(setChoosedItem(buyingLists));
             dispatch(setTotalAmount(totalAmount));
       }
@@ -50,23 +49,26 @@ function setTotalAmount(totalAmount) {
       };
 }
 
-function setFeeds() {
+function getFeeds(){
+      return (dispatch, getState) => {
+            fetch('http://18.222.158.114:3210/saleList')
+                  .then(response => {
+                        if(response.status == 401) {
+                              alert('fuck error');
+                        }
+                        console.log("getFeeds ", response);
+                        return response.json();
+                  })
+                  .then(json => {
+                        dispatch(setFeeds(json));
+                  })
+      }
+}
+
+function setFeeds(feeds) {
       return {
             type: SET_FEEDS,
-            feeds: [
-                  {
-                        id: 0,
-                        name: '콜라',
-                        price: 1000,
-                        count: 1
-                  },
-                  {
-                        id: 1,
-                        name: '사이다',
-                        price: 1500,
-                        count: 1
-                  }
-            ]
+            feeds: feeds
       };
 }
 
@@ -148,7 +150,7 @@ const applyResetByVMChoice = (state, action) => {
 // Exports
 const actionCreators = {
       chooseItem,
-      setFeeds,
+      getFeeds,
       setResetByVMChoice,
       setTotalAmount,
       reset

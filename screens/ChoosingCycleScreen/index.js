@@ -1,24 +1,25 @@
 import { connect } from "react-redux";
 import Container from "./container";
+import { actionCreators as ChoosingCycleActions } from "../../redux/modules/choosingCycle";
 import { actionCreators as ChoosingItemsActions } from "../../redux/modules/choosingItems";
  
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("ChoosingItemScreen mapStateToProps");    
-    const { choosingItems: { feeds } } = state;
+    console.log("ChoosingCycleScreen mapStateToProps");    
+    const { choosingCycle: { cycles } } = state;
     return {
-        feeds
+        cycles
     };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    console.log("ChoosingItemScreen mapDispatchToProps");    
+    console.log("ChoosingCycleScreen mapDispatchToProps");    
     return {
         initApp: () => {
-            dispatch(ChoosingItemsActions.getFeeds());
+            dispatch(ChoosingCycleActions.setCycles());
         },
-        pickItem: (item) => {
-            dispatch(ChoosingItemsActions.chooseItem(item));
+        chooseCycle: (item) => {
+            dispatch(ChoosingCycleActions.chooseCycle(item));
         }
     };
 };
