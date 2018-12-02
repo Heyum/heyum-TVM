@@ -40,12 +40,17 @@ function resetByVMChoice() {
             const { choosingItems: { totalAmount } } = getState();
             const { choosingCycle: { choosedCycle } } = getState();
 
-            buyingLists.splice(0, buyingLists.length);
-            totalAmount.price = 0;
+            const tempBuyingLists = JSON.parse(JSON.stringify(buyingLists));
+            const tempTotalAmount = JSON.parse(JSON.stringify(totalAmount));
+            const tempChoosedCycle = JSON.parse(JSON.stringify(choosedCycle));
 
-            dispatch(ChoosingItemsActions.setResetByVMChoice(buyingLists));
-            // dispatch(ChoosingCycleActions.setResetCycle(choosedCycle));
-            dispatch(ChoosingItemsActions.setTotalAmount(totalAmount));
+            tempBuyingLists.splice(0, tempBuyingLists.length);
+            tempTotalAmount.price = 0;
+            tempChoosedCycle.name = null;
+
+            dispatch(ChoosingItemsActions.setResetByVMChoice(tempBuyingLists));
+            dispatch(ChoosingCycleActions.setResetCycle(tempChoosedCycle));
+            dispatch(ChoosingItemsActions.setTotalAmount(tempTotalAmount));
       }
 }
 

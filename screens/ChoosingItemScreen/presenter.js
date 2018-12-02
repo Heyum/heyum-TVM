@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import PropTypes from "prop-types";
-import Item from '../../components/Items/BuyingList/ChoosingScreenItem'
 import BuyingList from "../../components/BuyingList"
 
-export default class ChoosingItemScreen extends React.Component {
+class ChoosingItemScreen extends React.Component {
     static propTypes = {
         feeds: PropTypes.array,
         pickItem: PropTypes.func.isRequired
@@ -20,8 +19,8 @@ export default class ChoosingItemScreen extends React.Component {
                 {
                     feeds ? 
                     feeds.map(item => (
-                        <Item key={item.id} {...item} pick={pickItem}/>
-                        )) 
+                    <Item key={item.product_name} {...item} pick={pickItem}/>
+                    )) 
                     : null
                 }
             </ScrollView>
@@ -36,6 +35,30 @@ export default class ChoosingItemScreen extends React.Component {
     };*/
 }
 
+class Item extends React.Component {
+
+    render() {
+        console.log("ChoosingScreenItem");
+
+        const pickedItem = {
+            id: this.props.id,
+            name: this.props.product_name,
+            price: this.props.product_price,
+            count: this.props.count
+        } 
+        
+        return(
+            <Button 
+                title={
+                    pickedItem.name +  ": " + pickedItem.price + "원"
+                }
+                onPress={ () => {this.props.pick(pickedItem); } }
+            >
+            </Button>
+        ); 
+    }
+}
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -47,3 +70,5 @@ const styles = StyleSheet.create({
         alignItems: "center",
     }
 });
+
+export default ChoosingItemScreen;

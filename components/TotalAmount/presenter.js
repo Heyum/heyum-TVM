@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, TextInput, ScrollView, Platform } from 'react-native';
-import Item from "../Items/TotalAmountItem"
+import { View, Text, StyleSheet, Platform } from 'react-native';
   
 class TotalAmount extends Component{
 
@@ -17,27 +16,28 @@ class TotalAmount extends Component{
     }
 }
 
+class Item extends React.Component {
+
+    render() {
+        console.log("TotalAmountItem");
+        
+        return(
+            <Text>
+                {" 총 " + this.props.totalAmount.price + "원 입니다."}
+            </Text>
+        ); 
+    }
+}
+
+
 const styles = StyleSheet.create({
     list:{
         backgroundColor: "white",
-        borderRadius: 10,
-        width: 300,
-        height: 50,
+        width: 200,
+        height: 40,
+        borderBottomWidth: 1,
+        borderBottomColor: "black",
         justifyContent: 'center',
-        ...Platform.select({
-            ios: {
-                shadowColor:"rgb(50, 50, 50)",
-                shadowOpacity: 0.5,
-                shadowRadius: 5,
-                shadowOffset:{
-                    height: -1,
-                    width: 0
-                }
-            },
-            android: {
-                elevation: 3
-            }
-        })
     }
 });
   

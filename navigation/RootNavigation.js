@@ -9,7 +9,7 @@ const RootNavigation = createStackNavigator(
         Home: {
             screen: HomeScreen,
             navigationOptions: () => ({
-                title: 'HOME',
+                title: '오늘의 자판기',
             }),
         },
         ChoosingItem: {
@@ -35,9 +35,9 @@ const RootNavigation = createStackNavigator(
         initialRouteName: 'Home',
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#DDDDFF',
+                backgroundColor: '#FFFFFF',
             },
-            headerTintColor: '#333333',
+            headerTintColor: '#000000',
             headerTitleStyle: {
                 fontWeight: 'bold',
             },

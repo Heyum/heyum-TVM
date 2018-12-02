@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import PropTypes from "prop-types";
-import Item from '../../components/Items/Cycle/ChoosingCycleScreenItem'
 
 export default class ChoosingCycleScreen extends React.Component {
     static propTypes = {
@@ -33,6 +32,30 @@ export default class ChoosingCycleScreen extends React.Component {
             title: '골라 골라!',
         };
     };*/
+}
+
+class Item extends React.Component {
+
+    render() {
+        console.log("ChoosingCycleScreenItems");
+        // console.log("Item", this.key); 
+
+        const pickedItem = {
+            id: this.props.id,
+            name: this.props.name
+        } 
+        
+        return(
+            <Button 
+                title={ pickedItem.name }
+                onPress={ () => {
+                    this.props.chooseCycle(pickedItem); 
+                    this.props.navigation.goBack();
+                } }
+            >
+            </Button>
+        ); 
+    }
 }
 
 const styles = StyleSheet.create({

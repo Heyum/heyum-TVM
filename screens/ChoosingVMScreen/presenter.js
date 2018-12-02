@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import PropTypes from "prop-types";
-import Item from '../../components/Items/VendingMachine/ChoosingVMScreenItem'
 
-export default class ChoosingVMScreen extends React.Component {
+class ChoosingVMScreen extends React.Component {
     static propTypes = {
         vendingMachines: PropTypes.array,
         chooseVendingMachine: PropTypes.func.isRequired,
@@ -36,6 +35,30 @@ export default class ChoosingVMScreen extends React.Component {
     };*/
 }
 
+class Item extends React.Component {
+
+    render() {
+        console.log("ChoosingVMScreenItems");
+
+        const pickedItem = {
+            id: this.props.id,
+            name: this.props.name
+        } 
+        
+        return(
+            <Button 
+                title={ pickedItem.name }
+                onPress={ () => {
+                    this.props.chooseVendingMachine(pickedItem); 
+                    this.props.resetByVMChoice(); 
+                    this.props.navigation.goBack();
+                } }
+            >
+            </Button>
+        ); 
+    }
+}
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -46,3 +69,5 @@ const styles = StyleSheet.create({
         alignItems: "center",
     }
 });
+
+export default ChoosingVMScreen;

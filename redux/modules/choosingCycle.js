@@ -42,9 +42,10 @@ function setCycles() {
       };
 }
 
-function setResetCycle() {
+function setResetCycle(choosedCycle) {
       return {
             type: SET_RESET_CYCLE,
+            choosedCycle
       };
 }
 
@@ -56,7 +57,9 @@ function reset() {
 
 // Initial State
 
-const initialState = { } 
+const initialState = { 
+      choosedCycle: { }
+} 
 
 // Reducer
 

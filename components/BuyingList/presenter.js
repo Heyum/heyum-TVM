@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, TextInput, Platform, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Platform, ScrollView } from 'react-native';
 import PropTypes from "prop-types";
-import Item from "../Items/BuyingList/BuyingListItem"
 
 const { height, width } = Dimensions.get("window");
 
@@ -29,13 +28,29 @@ class BuyingList extends Component{
     }
 }
 
+
+class Item extends React.Component {
+
+    render() {
+        console.log("BuyingListItem");
+        
+        return(
+            <Text> 
+                {
+                    this.props.name +  ": " + this.props.price + "원" +  " " + this.props.count + "개"
+                }
+            </Text>
+        ); 
+    }
+}
+
 const styles = StyleSheet.create({
     list:{
         backgroundColor: "white",
-        flex: 3,
+        flex: 1,
         width: width - 25,
         borderRadius: 10,
-        marginTop: 10,
+        margin: 10,
         ...Platform.select({
             ios: {
                 shadowColor:"rgb(50, 50, 50)",

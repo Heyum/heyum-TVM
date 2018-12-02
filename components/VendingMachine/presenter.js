@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, TextInput, ScrollView, Platform } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Platform } from 'react-native';
 import PropTypes from "prop-types";
-import Item from "../Items/VendingMachine/ChoosedVMItem"
+import { FontAwesome } from '@expo/vector-icons';
   
 const { height, width } = Dimensions.get("window");
 
@@ -11,30 +11,44 @@ class VendingMachine extends Component{
     };
 
     render(){
-
         return(
-            <View style={styles.list}>
-                {
-                    this.props.choosedVendingMachine ? 
-                    <Item key={this.props.choosedVendingMachine.id} {...this.props.choosedVendingMachine} />
-                    : null
-                }
-            </View>      
+                <TouchableOpacity style={styles.list} onPressOut={this.props.onPress}>
+                    <View style={styles.left}>
+                        {
+                            this.props.choosedVendingMachine ? 
+                            <Item key={this.props.choosedVendingMachine.id} {...this.props.choosedVendingMachine} />
+                            : null
+                        }
+                    </View>
+                    <FontAwesome style={styles.right} name="search" size={20} color="white" />
+                </TouchableOpacity>     
         );
+    }
+}
+
+class Item extends React.Component {
+
+    render() {
+        console.log("ChoosedVMItem");
+        return(
+            <Text style={styles.item} > { this.props.name } </Text>
+        ); 
     }
 }
 
 const styles = StyleSheet.create({
     list:{
-        backgroundColor: "white",
+        backgroundColor: "#333f50",
         borderRadius: 10,
-        width: 300,
-        height: 50,
+        width: 250,
+        height: 40,
         justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
         ...Platform.select({
             ios: {
                 shadowColor:"rgb(50, 50, 50)",
-                shadowOpacity: 0.5,
+                shadowOpacity: 0.3,
                 shadowRadius: 5,
                 shadowOffset:{
                     height: -1,
@@ -42,9 +56,21 @@ const styles = StyleSheet.create({
                 }
             },
             android: {
-                elevation: 3
+                elevation: 2
             }
         })
+    },
+    item: {
+        fontSize: 18,
+        fontWeight: "bold",
+        textAlign: "center",
+        color: "white"
+    },
+    left: {
+        flex: 8,
+    },
+    right: {
+        flex : 1,
     }
 });
   

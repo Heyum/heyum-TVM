@@ -15,37 +15,38 @@ function chooseItem(item) {
       return (dispatch, getState) =>  {
             const { choosingItems: { buyingLists } } = getState();
             const { choosingItems: { totalAmount } } = getState();
-            console.log("totalAmount", totalAmount);
 
-            let number = buyingLists.findIndex(obj => obj.id === item.id);
+            // console.log("totalAmount", totalAmount);
+            const tempBuyingLists = JSON.parse(JSON.stringify(buyingLists));
+            const tempTotalAmount = JSON.parse(JSON.stringify(totalAmount));
+
+            let number = tempBuyingLists.findIndex(obj => obj.id === item.id);
+
             if(number === -1) {
-                  buyingLists.push(item);
-                  totalAmount.price += item.price;
-            //      console.log(buyingLists);
+                  tempBuyingLists.push(item);
+                  tempTotalAmount.price += item.price;
             } else {
-                  buyingLists[number].count += 1;
-                  totalAmount.price += item.price;
-            //      console.log(buyingLists);
+                  tempBuyingLists[number].count += 1;
+                  tempTotalAmount.price += item.price;
             }
-
-            console.log("chooseItem test!", getState());
+            // console.log("chooseItem test!", getState());
             
-            dispatch(setChoosedItem(buyingLists));
-            dispatch(setTotalAmount(totalAmount));
+            dispatch(setChoosedItem(tempBuyingLists));
+            dispatch(setTotalAmount(tempTotalAmount));
       }
 }
 
 function setChoosedItem(buyingLists) {
       return {
             type: CHOOSE_ITEM,
-            buyingLists: JSON.parse(JSON.stringify(buyingLists))
+            buyingLists
       };
 }
 
 function setTotalAmount(totalAmount) {
       return {
             type: SET_TOTAL_AMOUNT,
-            totalAmount: JSON.parse(JSON.stringify(totalAmount))
+            totalAmount
       };
 }
 
@@ -75,7 +76,7 @@ function setFeeds(feeds) {
 function setResetByVMChoice(buyingLists) {
       return {
             type: RESET_BY_VM_CHOICE,
-            buyingLists: JSON.parse(JSON.stringify(buyingLists))
+            buyingLists
       };
 }
 
