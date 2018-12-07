@@ -41,7 +41,7 @@ class Item extends React.Component {
         console.log("ChoosingScreenItem");
 
         const pickedItem = {
-            id: this.props.id,
+            id: this.props.product_code,
             name: this.props.product_name,
             price: this.props.product_price,
             count: this.props.count

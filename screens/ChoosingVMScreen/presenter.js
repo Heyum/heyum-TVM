@@ -20,7 +20,7 @@ class ChoosingVMScreen extends React.Component {
                 {
                     vendingMachines ? 
                     vendingMachines.map(item => (
-                        <Item key={item.id} {...item} {...this.props}/>
+                        <Item key={item.vm} {...item} {...this.props}/>
                         )) 
                     : null
                 }
@@ -41,8 +41,8 @@ class Item extends React.Component {
         console.log("ChoosingVMScreenItems");
 
         const pickedItem = {
-            id: this.props.id,
-            name: this.props.name
+            id: this.props.vend_id,
+            name: this.props.vend_location
         } 
         
         return(
