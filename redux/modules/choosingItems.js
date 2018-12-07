@@ -53,6 +53,7 @@ function setTotalAmount(totalAmount) {
 
 function getFeeds(){
       return (dispatch, getState) => {
+            const {choosingVendingMachine : {choosedVendingMachine}} = getState();
             fetch('http://18.222.158.114:3210/saleList')
                   .then(response => {
                         if(response.status == 401) {
@@ -68,10 +69,10 @@ function getFeeds(){
 }
 
 function setFeeds(feeds) {
-      return {
-            type: SET_FEEDS,
-            feeds: feeds
-      };
+            return {
+                  type: SET_FEEDS,
+                  feeds: feeds
+            };
 }
 
 function setResetByVMChoice(buyingLists) {

@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     console.log("ChoosingVMScreen mapDispatchToProps");    
     return {
         initApp: () => {
-            dispatch(ChoosingVendingMachineActions.setVendingMachines());
+            dispatch(ChoosingVendingMachineActions.getVendingMachines());
         },
         chooseVendingMachine: (item) => {
             dispatch(ChoosingVendingMachineActions.chooseVendingMachine(item));

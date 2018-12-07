@@ -18,19 +18,26 @@ function chooseVendingMachine(item) {
       };
 }
 
-function setVendingMachines() {
+function getVendingMachines() {
+      return (dispatch, getState) => {
+            fetch('http://18.222.158.114:3210/vmList')
+                  .then(response => {
+                        if(response.status == 401) {
+                              alert('fuck error');
+                        }
+                        console.log("getFeeds ", response);
+                        return response.json();
+                  })
+                  .then(json => {
+                        dispatch(setVendingMachines(json));
+                  })
+      }
+}
+
+function setVendingMachines(feeds) {
       return {
             type: SET_VENDINGMACHINES,
-            vendingMachines: [
-                  {
-                        id: 0,
-                        name: '사회과학관 3층',
-                  },
-                  {
-                        id: 1,
-                        name: '사회과학관 4층',
-                  }
-            ]
+            vendingMachines: feeds
       };
 }
 
@@ -101,7 +108,7 @@ const applySetVendingMachines = (state, action) => {
 // Exports
 const actionCreators = {
         chooseVendingMachine,
-        setVendingMachines,
+        getVendingMachines,
         resetByVMChoice,
         reset
 };

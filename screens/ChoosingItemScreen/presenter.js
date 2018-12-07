@@ -17,8 +17,8 @@ class ChoosingItemScreen extends React.Component {
 
         return(
             <View style={styles.container}>
-                <View style={styles.BL_text}>
-                        <Text style={styles.BLT}> 물품 목록 </Text>
+                <View style={styles.CIS_text}>
+                        <Text style={styles.CIST}> 물품 목록 </Text>
                 </View>
                 <View style = {styles.lineStyle} />     
                 <View style={styles.list}>
@@ -32,8 +32,8 @@ class ChoosingItemScreen extends React.Component {
                         }
                     </ScrollView>
                 </View>
-                <View style={styles.BL_text}>
-                        <Text style={styles.BLT}> 선택한 물품 </Text>
+                <View style={styles.CIS_text}>
+                        <Text style={styles.CIST}> 선택한 물품 </Text>
                 </View>
                 <View style = {styles.lineStyle} />     
                 <BuyingList />  
@@ -56,7 +56,7 @@ class Item extends React.Component {
             id: this.props.product_code,
             name: this.props.product_name,
             price: this.props.product_price,
-            count: 0
+            count: 1
         } 
         
         return(
@@ -102,12 +102,12 @@ const styles = StyleSheet.create({
             }
         })
     },
-    BL_text: {
+    CIS_text: {
         flex: 0.5,
         alignItems: "flex-start",
         justifyContent: "flex-end",
     },
-    BLT: {
+    CIST: {
         // flex: 1 -> 위 아래로 가득 차는 현상이 발생해 제거(justigyContent를 적용 받지 못함)
         fontSize: 18,
         fontWeight: "bold",

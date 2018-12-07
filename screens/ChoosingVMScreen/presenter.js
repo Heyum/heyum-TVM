@@ -18,8 +18,8 @@ class ChoosingVMScreen extends React.Component {
 
         return(
             <View style={styles.container}>
-                <View style={styles.BL_text}>
-                    <Text style={styles.BLT}> 자판기 목록 </Text>
+                <View style={styles.CVS_text}>
+                    <Text style={styles.CVST}> 자판기 목록 </Text>
                 </View>
                 <View style = {styles.lineStyle} />
                 <View style={styles.list}>
@@ -27,7 +27,7 @@ class ChoosingVMScreen extends React.Component {
                         {
                             vendingMachines ? 
                             vendingMachines.map(item => (
-                                <Item key={item.id} {...item} {...this.props}/>
+                                <Item key={item.vend_id} {...item} {...this.props}/>
                                 )) 
                             : null
                         }
@@ -49,8 +49,8 @@ class Item extends React.Component {
         console.log("ChoosingVMScreenItems");
 
         const pickedItem = {
-            id: this.props.id,
-            name: this.props.name
+            id: this.props.vend_id,
+            name: this.props.vend_location
         } 
         
         return(
@@ -97,12 +97,12 @@ const styles = StyleSheet.create({
             }
         })
     },
-    BL_text: {
+    CVS_text: {
         flex: 0.5,
         alignItems: "flex-start",
         justifyContent: "flex-end",
     },
-    BLT: {
+    CVST: {
         // flex: 1 -> 위 아래로 가득 차는 현상이 발생해 제거(justigyContent를 적용 받지 못함)
         fontSize: 18,
         fontWeight: "bold",
@@ -114,7 +114,6 @@ const styles = StyleSheet.create({
         borderColor:'#ffa760',
         marginTop: 10,
         marginHorizontal: 20,
-
    }
 });
 

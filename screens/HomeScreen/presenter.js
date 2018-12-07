@@ -46,13 +46,12 @@ export default class HomeScreen extends React.Component {
                     </View>  
                 </View>
 
-
-                <View style={styles.VM}>
-                    <View style={styles.VM_text}>
-                        <Text style={styles.VMT}> 시간설정 </Text>
+                <View style={styles.C}>
+                    <View style={styles.C_text}>
+                        <Text style={styles.CT}> 시간설정 </Text>
                     </View>                        
                     <View style = {styles.lineStyle} />
-                    <View style={styles.VM_nested}>
+                    <View style={styles.C_nested}>
                         <Cycle onPress={() => {
                             if(this.props.choosedVendingMachine) {
                                 this.props.navigation.navigate('ChoosingCycle');
@@ -63,10 +62,9 @@ export default class HomeScreen extends React.Component {
                     </View>
                 </View>
             
-
                 <View style={styles.TA}>
-                    <View style={styles.BM_text}>
-                        <Text style={styles.BLT}> TOTAL </Text>
+                    <View style={styles.TA_text}>
+                        <Text style={styles.TAT}> TOTAL </Text>
                     </View>     
                     <View style = {styles.lineStyle} />
                     <View style={styles.TA_nested}>
@@ -96,11 +94,13 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    //// Container From Here ////
     container: {
         flex: 1,
         backgroundColor: '#FFFFCC',
         flexDirection: 'column',
     },
+    //// Vending Machine From Here ////
     VM: {
         flex: 1.5,
         backgroundColor: '#FFFFFF',
@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    //// Buying List From Here ////
     BL: {
         flex: 3.5,
         backgroundColor: '#FFFFFF',
@@ -176,16 +177,44 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "white"
     },
+    //// Cycle List From Here ////
     C: {
         flex: 1.5,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#FFFFFF'
     },
+    C_text: {
+        flex: 1,
+        alignItems: "flex-start",
+        justifyContent: "flex-end",
+    },
+    CT: {
+        // flex: 1 -> 위 아래로 가득 차는 현상이 발생해 제거(justigyContent를 적용 받지 못함)
+        fontSize: 18,
+        fontWeight: "bold",
+        color: "black",
+        marginLeft: 20,
+    },
+    C_nested: {
+        flex: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    //// Total Amount From Here ////
     TA: {
         flex: 1.5,
         backgroundColor: '#FFFFFF',
+    },
+    TA_text: {
+        flex: 1,
+        alignItems: "flex-start",
+        justifyContent: "flex-end",
+    },
+    TAT: {
+        // flex: 1 -> 위 아래로 가득 차는 현상이 발생해 제거(justigyContent를 적용 받지 못함)
+        fontSize: 18,
+        fontWeight: "bold",
+        color: "black",
+        marginLeft: 20,
     },
     TA_nested: {
         flex: 2,
@@ -221,6 +250,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "white"
     },
+    //// Line Style From Here ////
     lineStyle:{
         borderWidth: 1,
         borderColor:'#ffa760',
