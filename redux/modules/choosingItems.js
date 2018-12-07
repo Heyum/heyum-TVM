@@ -21,6 +21,7 @@ function chooseItem(item) {
             const tempTotalAmount = JSON.parse(JSON.stringify(totalAmount));
 
             let number = tempBuyingLists.findIndex(obj => obj.id === item.id);
+            console.log(number);
 
             if(number === -1) {
                   tempBuyingLists.push(item);

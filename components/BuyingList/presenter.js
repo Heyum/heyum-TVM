@@ -13,7 +13,7 @@ class BuyingList extends Component{
         const { buyingLists } = this.props;
 
         return(
-            <View style={styles.list}>  
+            <View style={styles.list}>
                 <ScrollView contentContainerStyle={styles.feeds}>
                     {
                         buyingLists ? 
@@ -23,7 +23,7 @@ class BuyingList extends Component{
                          : null
                     }
                 </ScrollView>
-            </View>   
+            </View>
         );
     }
 }
@@ -45,11 +45,14 @@ class Item extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    feeds: {
+        alignItems: "center"
+    },
     list:{
         backgroundColor: "white",
-        flex: 1,
-        width: width - 25,
+        flex: 1.5,
         borderRadius: 10,
+        width: width - 20,
         margin: 10,
         ...Platform.select({
             ios: {
@@ -66,9 +69,6 @@ const styles = StyleSheet.create({
             }
         })
     },
-    feeds: {
-        alignItems: "center"
-    }
 });
   
 
