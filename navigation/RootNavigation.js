@@ -3,6 +3,7 @@ import HomeScreen from "../screens/HomeScreen";
 import ChoosingItemScreen from "../screens/ChoosingItemScreen";
 import ChoosingVMScreen from "../screens/ChoosingVMScreen";
 import ChoosingCycleScreen from "../screens/ChoosingCycleScreen";
+import CheckoutScreen from "../screens/CheckoutScreen";
 
 const RootNavigation = createStackNavigator(
     {
@@ -29,6 +30,12 @@ const RootNavigation = createStackNavigator(
             navigationOptions: () => ({
                 title: 'Cycles!',
             }),
+        },
+        Checkout: {
+            screen: CheckoutScreen,
+            navigationOptions: () => ({
+                title: '결제화면',
+            }),            
         }
     },
     {

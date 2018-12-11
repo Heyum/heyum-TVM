@@ -22,8 +22,8 @@ class Item extends React.Component {
         console.log("TotalAmountItem");
         
         return(
-            <Text>
-                {" 총 " + this.props.totalAmount.price + "원 입니다."}
+            <Text style={styles.TAT}>
+                {"총 " + this.props.totalAmount.price + "원"}
             </Text>
         ); 
     }
@@ -38,7 +38,14 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: "black",
         justifyContent: 'center',
-    }
+        alignItems: 'center'
+    },
+    TAT: {
+        // flex: 1 -> 위 아래로 가득 차는 현상이 발생해 제거(justigyContent를 적용 받지 못함)
+        fontSize: 18,
+        fontWeight: "bold",
+        color: "black",
+    },
 });
   
 

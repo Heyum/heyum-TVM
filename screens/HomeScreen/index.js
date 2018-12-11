@@ -5,11 +5,13 @@ const mapStateToProps = (state, ownProps) => {
     console.log("HomeScreen mapStateToProps");    
     const { choosingVendingMachine: { choosedVendingMachine } } = state;
     const { choosingItems: { totalAmount } } = state;
+    const { choosingItems: { buyingLists } } = state;
     const { choosingCycle: { choosedCycle } } = state;
     return {
         choosedVendingMachine,
         totalAmount,
-        choosedCycle
+        choosedCycle,
+        buyingLists
     };
 };
 

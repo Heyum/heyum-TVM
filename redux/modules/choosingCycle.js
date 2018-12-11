@@ -23,20 +23,20 @@ function setCycles() {
             type: SET_CYCLES,
             cycles: [
                     {
-                        id: 0,
-                        name: 'CYCLE (1): 9시 ~ 12시',
+                        id: '09:00',
+                        name: 'CYCLE (1): 9시 ~ 12시 수령가능',
                     },
                     {
-                        id: 1,
-                        name: 'CYCLE (2): 12시 ~ 15시',
+                        id: '12:00',
+                        name: 'CYCLE (2): 12시 ~ 15시 수령가능',
                     },
                     {
-                        id: 2,
-                        name: 'CYCLE (3): 15시 ~ 18시',
+                        id: '15:00',
+                        name: 'CYCLE (3): 15시 ~ 18시 수령가능',
                     },
                     {
-                        id: 3,
-                        name: 'CYCLE (4): 18시 ~ 21시',
+                        id: '18:00',
+                        name: 'CYCLE (4): 18시 ~ 21시 수령가능',
                     }
             ]
       };

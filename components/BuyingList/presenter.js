@@ -18,7 +18,10 @@ class BuyingList extends Component{
                     {
                         buyingLists ? 
                             buyingLists.map(item => (
-                                <Item key={item.id} {...item} />
+                                <View key={item.id} style = {styles.container}>
+                                    <Item {...item} />
+                                    <View style = {styles.lineStyle}/>
+                                </View>
                             )) 
                          : null
                     }
@@ -35,9 +38,9 @@ class Item extends React.Component {
         console.log("BuyingListItem");
         
         return(
-            <Text> 
+            <Text style={styles.BYT}> 
                 {
-                    this.props.name +  ": " + this.props.price + "원" +  " " + this.props.count + "개"
+                    this.props.name +  " " + this.props.price + "원" +  " " + this.props.count + "개"
                 }
             </Text>
         ); 
@@ -46,6 +49,10 @@ class Item extends React.Component {
 
 const styles = StyleSheet.create({
     feeds: {
+        alignItems: "center"
+    },
+    container: {
+        backgroundColor: '#FFFFFF',
         alignItems: "center"
     },
     list:{
@@ -69,6 +76,19 @@ const styles = StyleSheet.create({
             }
         })
     },
+    BYT: {
+        // flex: 1 -> 위 아래로 가득 차는 현상이 발생해 제거(justigyContent를 적용 받지 못함)
+        fontSize: 16,
+        fontWeight: "bold",
+        color: "black",
+        marginTop: 10,
+    },
+    lineStyle:{
+        borderWidth: 0.5,
+        borderColor:'#bbbcbf',
+        marginTop: 10,
+        width: width - 50,
+    }
 });
   
 

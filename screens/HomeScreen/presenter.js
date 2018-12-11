@@ -5,6 +5,7 @@ import BuyingList from "../../components/BuyingList";
 import TotalAmount from "../../components/TotalAmount";
 import Cycle from "../../components/Cycle";
 import VendingMachine from "../../components/VendingMachine";
+import { getTimeFieldValues } from 'uuid-js';
 
 export default class HomeScreen extends React.Component {
     render() {
@@ -70,11 +71,42 @@ export default class HomeScreen extends React.Component {
                     <View style={styles.TA_nested}>
                         <TotalAmount />
                         <TouchableOpacity style={styles.TAB} onPressOut={() => {
-                            if(this.props.totalAmount.price && this.props.choosedCycle) {
-                                this.props.navigation.navigate('pay');
-                            } else if (this.props.choosedCycle) {
+                            if(this.props.totalAmount.price && this.props.choosedCycle.name) {
+                                this.props.navigation.navigate('Checkout');
+                            
+                                for(const value of this.props.buyingLists) {
+                                    fetch('http://18.222.158.114:3210/buyIt', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Accept': 'application/json',
+                                            'Content-Type': 'application/json',
+                                        },
+                                        body: JSON.stringify(
+                                            {
+                                                name: 'Dmkim',
+                                                productCode: value.id ,
+                                                qunatity: value.count ,
+                                                vendId: this.props.choosedVendingMachine.id,
+                                                time: this.props.choosedCycle.id,
+                                                check: '배송전'
+                                            }
+                                        )
+                                    })
+                                    .then(response => {
+                                        return response.json()
+                                    })
+                                    .then(json => {
+                                        console.log(json);
+                                    })
+                                    .catch(error => {
+                                        console.error(error);
+                                    })
+                                }
+                                alert('결제가 완료되었습니다.');
+
+                            } else if (this.props.choosedCycle.name && !this.props.totalAmount.price) {
                                 alert("선택하신 품목이 없습니다!");
-                            } else {
+                            } else if (!this.props.choosedCycle.name && this.props.totalAmount.price) {
                                 alert("수령 시간을 선택해 주세요!");
                             }
                         }}>
@@ -256,6 +288,5 @@ const styles = StyleSheet.create({
         borderColor:'#ffa760',
         marginTop: 10,
         marginHorizontal: 20,
-
    }
 })

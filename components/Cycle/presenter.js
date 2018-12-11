@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         })
     },
     item: {
-        fontSize: 18,
+        fontSize: 14,
         fontWeight: "bold",
         textAlign: "center",
         color: "black"
