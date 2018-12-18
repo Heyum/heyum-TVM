@@ -1,3 +1,1 @@
 # heyum-TVM
-
-This is for SOFTWARE ENGINEERING CLASS
